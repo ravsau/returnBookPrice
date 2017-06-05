@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class BookApp {
 
@@ -7,13 +8,48 @@ public class BookApp {
 		a.setTitle("A tale of Two Cities");
 		a.setAuthor("Charles Dickens");
 		a.setInfo("It's a story about Two Cities");
-		a.setPrice(55.77);
+		a.setPrice(55);
 		a.setAvailable(true);
+		a.setSku("TTC");
+		a.setnoInStock(4);
 
 
-		Book b=new Book("Siddhartha","Herman Hesse","Philosophical book about a man's search for meaning",10,false);
 
 
+		Book b=new Book("SID","Siddhartha","Herman Hesse","Philosophical book about a man's "
+				+ "search for meaning",10,true,12);
+
+
+		Scanner sc= new Scanner (System.in);
+		System.out.println("Enter the SKU of the book you're looking for");
+
+		String sku=sc.nextLine();
+		sku=sku.toUpperCase();
+
+
+
+		System.out.println("Enter the quantitity of this book you're looking for");
+
+		int bookNum=sc.nextInt();
+
+
+
+        if (sku.equals("TTC")){
+        	System.out.println(a.PrintPrice(sku,bookNum));
+        }
+        
+        else if (sku.equals("SID")){
+        	System.out.println(b.PrintPrice(sku,bookNum));
+        }
+        
+        else{
+        	
+        	System.out.println("Looks like you entered the wrong SKU");
+        }
+		
+
+
+		/* 
 
 		System.out.println(a.getTitle());
 
@@ -36,6 +72,8 @@ public class BookApp {
 		System.out.println("$ "+b.getPrice());
 
 		System.out.println("Available: "+b.getAvailable());
+
+		 */
 
 
 	}

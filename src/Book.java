@@ -7,6 +7,9 @@ public class Book {
 	private String info; 
 	private double price;
 	private Boolean isInStock;
+	private String sku;
+	private int noInStock;
+	
 
 
 
@@ -16,13 +19,16 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, String info, double price, Boolean isInStock){
+	public Book(String sku,String title, String author, String info, double price, Boolean isInStock,int noInStock){
 
 		this.title=title; 
 		this.author=author;; 
 		this.info=info; 
 		this.price=price;
 		this.isInStock=isInStock;
+		this.sku=sku;
+		this.noInStock=noInStock;
+		
 
 	}
 
@@ -79,11 +85,67 @@ public class Book {
 		this.isInStock=is;
 
 	}
+	
+	
 
 	public Boolean getAvailable(){
 
 		return isInStock;
 
+	}
+	public String getSku(){
+
+		return this.sku;
+
+	}
+	
+	public void setSku(String sku){
+		
+		this.sku=sku;
+	}
+	public void setnoInStock(int num){
+		
+		noInStock=num;
+	}
+	public int getStock(){
+
+		return this.noInStock;
+
+	}
+	
+	
+	public String PrintPrice(String sku, int bookNum){
+		
+		String response="";
+		sku=sku.toUpperCase();
+		
+		if (sku.equals("TTC") && (bookNum<=getStock())){
+
+			response=("Your cost is $" + bookNum*getPrice()+ " for "+ bookNum +" books.");
+
+			
+
+
+		}
+
+		else if(sku.equals("SID") && (bookNum<=getStock())){
+
+			 response=("Your cost is $" + bookNum*getPrice()+ " for "+ bookNum +" books.");
+
+		
+
+
+		}
+
+		else if ((bookNum>getStock())||(bookNum>getStock())) {
+
+			 response=("Sorry, we don't have that many books. ");
+		}
+
+		
+		
+		return response;
+		
 	}
 
 
